@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\EmailContract.cs" />
+    <Compile Include="ValueObjects\ValueObjectBase.cs" />
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Interfaces\Notifications\INotifiable.cs" />
     <Compile Include="Interfaces\Notifications\INotification.cs" />
@@ -47,6 +49,17 @@
     <Compile Include="Interfaces\Specifications\IValidatable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\Specifications\ISpecification.cs" />
+    <Compile Include="ValueObjects\Email.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Specification.Notifications\Specification.Notifications.csproj">
+      <Project>{1B446F00-808E-4E25-ABFC-2DE0163FE0B9}</Project>
+      <Name>Specification.Notifications</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Specification.Validator\Specification.Validator.csproj">
+      <Project>{7e128e0f-345a-40ed-818b-952d8eccbe72}</Project>
+      <Name>Specification.Validator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

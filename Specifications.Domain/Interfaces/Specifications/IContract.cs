@@ -7,5 +7,7 @@ namespace Specifications.Domain.Interfaces.Specifications
         IContract Requires();
 
         IContract Join(params INotifiable[] items);
+
+        bool IsValid();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Specifications.Domain.ValueObjects;
 
 namespace Specifications.Domain.Entities
 {
@@ -12,5 +13,6 @@ namespace Specifications.Domain.Entities
 
         public Guid PersonId { get; }
         public string Name { get; }
+        public Email Email { get; }
     }
 }

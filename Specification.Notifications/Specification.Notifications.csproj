@@ -43,12 +43,7 @@
     <Compile Include="Notifiable.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Specifications.Domain\Specifications.Domain.csproj">
-      <Project>{b7ae2fe8-2f19-4dea-a363-5cd653ac0dd4}</Project>
-      <Name>Specifications.Domain</Name>
-    </ProjectReference>
+    <Compile Include="SeverityType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

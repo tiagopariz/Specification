@@ -2,7 +2,7 @@
 
 namespace Specifications.Domain.Interfaces.Notifications
 {
-    public interface INotifiable<TEntity> where TEntity : class
+    public interface INotifiable
     {
         IReadOnlyCollection<INotification> Notifications { get; }
         bool Invalid { get; }
@@ -12,7 +12,7 @@ namespace Specifications.Domain.Interfaces.Notifications
         void AddNotifications(IReadOnlyCollection<INotification> notifications);
         void AddNotifications(IList<INotification> notifications);
         void AddNotifications(ICollection<INotification> notifications);
-        void AddNotifications(INotifiable<TEntity> item);
-        void AddNotifications(params INotifiable<TEntity>[] items);
+        void AddNotifications(INotifiable item);
+        void AddNotifications(params INotifiable[] items);
     }
 }
