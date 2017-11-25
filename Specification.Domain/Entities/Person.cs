@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Specification.Domain.Contracts;
 using Specification.Domain.ValueObjects;
 using Specification.Notifications;
@@ -13,22 +12,20 @@ namespace Specification.Domain.Entities
 
         public Person(Guid personId, string name, Email email)
         {
-            IsValid(name, email);
+            Validate(name, email);
 
             PersonId = personId;
             Name = name;
             Email = email;
         }
 
-        private void IsValid(string name, Email email)
+        private void Validate(string name, Email email)
         {
             foreach (var notification in Contract.IsValidName(name, "Name", "Nome inválido").Notifications)
                 AddNotification(notification);
 
             foreach (var notification in email.Notifications)
                 AddNotification(notification);
-
-            Contract.IsValid();
         }
 
         public Guid PersonId { get; }

@@ -8,12 +8,14 @@ namespace Specification.Prompt
     {
         static void Main(string[] args)
         {
-            //var validPerson = new Person(Guid.NewGuid(), "Tiago", new Email("tiago@gmail.com"));
+            var validPerson = new Person(Guid.NewGuid(), "Tiago", new Email("tiago@gmail.com"));
 
-            //foreach (var notification in validPerson.Notifications)
-            //{
-            //    Console.WriteLine($"{notification.Property} - {notification.Message}");
-            //}
+            foreach (var notification in validPerson.Notifications)
+            {
+                Console.WriteLine($"{notification.Property} - {notification.Message}");
+            }
+
+            Console.WriteLine($"\nVálido: {validPerson.IsValid}\n");
 
             //var invalidPersonName = new Person(Guid.NewGuid(), "", new Email("tiago@gmail.com"));
 
@@ -35,6 +37,8 @@ namespace Specification.Prompt
             {
                 Console.WriteLine($"{notification.Property} - {notification.Message}");
             }
+
+            Console.WriteLine($"\nVálido: {invalidPersonNameEmail.IsValid}\n");
 
             Console.ReadKey();
         }

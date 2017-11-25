@@ -17,6 +17,7 @@ namespace Specification.Domain.Entities
 
         public TContract Contract => new TContract();
         public IReadOnlyCollection<TNotification> Notifications => Contract.Join(_notifications);
+        public bool IsValid => !(Notifications.Count > 0);
 
         public void AddNotification(TNotification notification)
         {
