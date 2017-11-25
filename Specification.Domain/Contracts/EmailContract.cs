@@ -1,6 +1,7 @@
-﻿using Specification.Validator.Validations;
+﻿using System.Text.RegularExpressions;
+using Specification.Validator.Validations;
 
-namespace Specifications.Domain.Contracts
+namespace Specification.Domain.Contracts
 {
     public class EmailContract : Contract
     {
@@ -10,8 +11,10 @@ namespace Specifications.Domain.Contracts
         public Contract IsEmail(string email, string property, string message)
         {
             const string pattern = @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
-            var result = Matchs(email, pattern, property, message);
-            return result;
+            if (!Regex.IsMatch(email ?? "", pattern))
+                AddNotification(property, message);
+
+            return this;
         }
 
         public Contract IsEmailOrEmpty(string email, string property, string message)

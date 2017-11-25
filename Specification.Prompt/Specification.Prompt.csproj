@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7E128E0F-345A-40ED-818B-952D8ECCBE72}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{CE8BA25B-6EA1-4267-B6FA-A70F86631702}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Specification.Validator</RootNamespace>
-    <AssemblyName>Specification.Validator</AssemblyName>
+    <RootNamespace>Specification.Prompt</RootNamespace>
+    <AssemblyName>Specification.Prompt</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,10 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Validations\Contract.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Specification.Domain\Specification.Domain.csproj">
+      <Project>{b7ae2fe8-2f19-4dea-a363-5cd653ac0dd4}</Project>
+      <Name>Specification.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Specification.Notifications\Specification.Notifications.csproj">
       <Project>{1b446f00-808e-4e25-abfc-2de0163fe0b9}</Project>
       <Name>Specification.Notifications</Name>

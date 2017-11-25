@@ -2,20 +2,20 @@
 using Specification.Notifications;
 using Specification.Validator.Validations;
 
-namespace Specifications.Domain.ValueObjects
+namespace Specification.Domain.Entities
 {
-    public abstract class ValueObjectBase<TContract, TNotification>
-        where TContract : Contract
+    public abstract class EntityBase<TContract, TNotification>
+        where TContract : Contract, new()
         where TNotification : Notification
     {
         private readonly List<TNotification> _notifications;
 
-        protected ValueObjectBase()
+        protected EntityBase()
         {
-            _notifications = null;
+            _notifications = new List<TNotification>();
         }
 
-        public TContract Contract { get; set; }
+        public TContract Contract => new TContract();
         public IReadOnlyCollection<TNotification> Notifications => Contract.Join(_notifications);
 
         public void AddNotification(TNotification notification)

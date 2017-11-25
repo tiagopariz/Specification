@@ -1,8 +1,8 @@
 ﻿using Specification.Notifications;
-using Specifications.Domain.Contracts;
-using Specifications.Domain.Entities;
+using Specification.Domain.Contracts;
+using Specification.Domain.Entities;
 
-namespace Specifications.Domain.ValueObjects
+namespace Specification.Domain.ValueObjects
 {
     public class Email : ValueObjectBase<EmailContract, Notification>
     {
@@ -19,16 +19,23 @@ namespace Specifications.Domain.ValueObjects
 
         #region Public properties
 
-        public string Address { get; private set; }
+        public string Address { get; }
+        public override bool Required { get; }
 
         #endregion
 
         #region Private Methods
 
-        private bool IsValid(string address)
+        private void IsValid(string address)
         {
-            Contract.IsEmail(address, "Email", "Email inválido");
-            return Contract.IsValid();
+            
+            foreach (var notification in Contract.IsEmail(address, "Email", "Email inválido").Notifications)
+                AddNotification(notification);
+
+            if (Required)
+                Contract.IsEmailOrEmpty(address, "Email", "Email inválido: " + address);
+
+            Contract.IsValid();
         }
 
         #endregion
@@ -44,17 +51,12 @@ namespace Specifications.Domain.ValueObjects
 
         #region Constructors
 
-        public Email(string address)
+        public Email(string address, bool required = false)
         {
-
-            AddNotification(new Notification("General", "Mail", SeverityType.Information));
-
-            if (IsValid(address))
-            {
-                return;
-            }
+            IsValid(address);
 
             Address = address.ToLower();
+            Required = required;
         }
 
         #endregion
