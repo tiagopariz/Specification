@@ -5,6 +5,9 @@ namespace Specification.Domain.Entities
 {
     public class Person
     {
+        public const int NameMinLength = 2;
+        public const int NameMaxLength = 50;
+
         public Person(Guid personId, string name, Email email, Category category)
         {
             PersonId = personId;

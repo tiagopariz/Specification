@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Specification.Domain.Entities;
 using Specification.Domain.Interfaces.Specifications;
 using Specification.Domain.Specifications;
+using Specification.Domain.Specifications.Entities;
 using Specification.Domain.ValueObjects;
 
 namespace Specification.Prompt
@@ -16,17 +17,17 @@ namespace Specification.Prompt
             // People list
             var people = new List<Person>
             {
-                new Person(Guid.NewGuid(), "Tiago1", new Email("tiago1@gmail.com"), new Category(1, "Partner")),
-                new Person(Guid.NewGuid(), "Tiago2", new Email("tiago2@gmail.com"), new Category(2, "Customer")),
-                new Person(Guid.NewGuid(), "Tiago3", new Email("tiago3@gmail.com"), new Category(1, "Partner")),
-                new Person(Guid.NewGuid(), "Tiago4", new Email("tiago4@gmail.com"), new Category(2, "Customer")),
-                new Person(Guid.NewGuid(), "Tiago5", new Email("tiago3@gmail.com"), new Category(2, "Customer")),
-                new Person(Guid.NewGuid(), "Tiago6", new Email("tiago6@gmail.com"), new Category(2, "Customer")),
+                new Person(Guid.NewGuid(), "Tiago1", new Email("tiago1@gmail.com"), new Category(2, "Partner")),
+                new Person(Guid.NewGuid(), "Tiago2", new Email("tiago2@gmail.com"), new Category(1, "Customer")),
+                new Person(Guid.NewGuid(), "Tiago3", new Email("tiago3@gmail.com"), new Category(2, "Partner")),
+                new Person(Guid.NewGuid(), "Tiago4", new Email("tiago4@gmail.com"), new Category(1, "Customer")),
+                new Person(Guid.NewGuid(), "Tiago5", new Email("tiago3@gmail.com"), new Category(1, "Customer")),
+                new Person(Guid.NewGuid(), "Tiago6", new Email("tiago6@gmail.com"), new Category(1, "Customer")),
                 new Person(Guid.NewGuid(), "Tiago7", new Email("tiago7@gmail.com"), null)
             };
 
-            ISpecification<Person> customersSpecification = new ExpressionSpecification<Person>(x => x.Category?.CategoryId == 2);
-            ISpecification<Person> partnerSpecification = new ExpressionSpecification<Person>(x => x.Category?.CategoryId == 1);
+            ISpecification<Person> customersSpecification = new ExpressionSpecification<Person>(x => x.Category?.CategoryId == 1);
+            ISpecification<Person> partnerSpecification = new ExpressionSpecification<Person>(x => x.Category?.CategoryId == 2);
             ISpecification<Person> nullSpecification = new ExpressionSpecification<Person>(x => x.Category == null);
 
             ISpecification<Person> allWithCategorySpecification = customersSpecification.Or(partnerSpecification);
@@ -42,7 +43,9 @@ namespace Specification.Prompt
             Console.WriteLine("");
             Console.WriteLine(":: CUSTOMER ::");
 
-            var customer = people.FindAll(x => customersSpecification.IsSatisfiedBy(x));
+            ISpecification<Person> personCustomersSpecification = new PersonCustomerSpecification<Person>();
+
+            var customer = people.FindAll(x => personCustomersSpecification.IsSatisfiedBy(x));
 
             foreach (var item in customer)
             {
