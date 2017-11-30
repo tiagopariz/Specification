@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B7AE2FE8-2F19-4DEA-A363-5CD653AC0DD4}</ProjectGuid>
+    <ProjectGuid>{C104FAD9-05FA-4319-BD87-0ABB1BE20462}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Specification.Domain</RootNamespace>
@@ -30,38 +30,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Contracts\PersonContract.cs" />
-    <Compile Include="Contracts\EmailContract.cs" />
-    <Compile Include="Entities\EntityBase.cs" />
-    <Compile Include="ValueObjects\ValueObjectBase.cs" />
+    <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Person.cs" />
+    <Compile Include="Interfaces\Specifications\ISpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Specifications\ValueObjects\EmailValidSpecification.cs" />
+    <Compile Include="Specifications\Entities\PersonCustomerSpecification.cs" />
+    <Compile Include="Specifications\Entities\PersonNameValidSpecification.cs" />
+    <Compile Include="Specifications\Entities\PersonValidSpecification.cs" />
+    <Compile Include="Specifications\ExpressionSpecification.cs" />
+    <Compile Include="Specifications\NotSpecification.cs" />
+    <Compile Include="Specifications\OrSpecification.cs" />
+    <Compile Include="Specifications\AndSpecification.cs" />
+    <Compile Include="Specifications\CompositeSpecification.cs" />
     <Compile Include="ValueObjects\Email.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Specification.Notifications\Specification.Notifications.csproj">
-      <Project>{1B446F00-808E-4E25-ABFC-2DE0163FE0B9}</Project>
-      <Name>Specification.Notifications</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Specification.Validator\Specification.Validator.csproj">
-      <Project>{7e128e0f-345a-40ed-818b-952d8eccbe72}</Project>
-      <Name>Specification.Validator</Name>
-    </ProjectReference>
+    <Reference Include="System" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\Notifications\" />
-    <Folder Include="Interfaces\Specifications\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

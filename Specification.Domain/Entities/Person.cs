@@ -1,35 +1,24 @@
 ﻿using System;
-using Specification.Domain.Contracts;
 using Specification.Domain.ValueObjects;
-using Specification.Notifications;
 
 namespace Specification.Domain.Entities
 {
-    public class Person : EntityBase<PersonContract, Notification>
+    public class Person
     {
-        public const int NameMaxLength = PersonContract.NameMaxLength;
-        public const int NameMinLength = PersonContract.NameMinLength;
+        public const int NameMinLength = 2;
+        public const int NameMaxLength = 50;
 
-        public Person(Guid personId, string name, Email email)
+        public Person(Guid personId, string name, Email email, Category category)
         {
-            Validate(name, email);
-
             PersonId = personId;
             Name = name;
             Email = email;
+            Category = category;
         }
 
-        private void Validate(string name, Email email)
-        {
-            foreach (var notification in Contract.IsValidName(name, "Name", "Nome inválido").Notifications)
-                AddNotification(notification);
-
-            foreach (var notification in email.Notifications)
-                AddNotification(notification);
-        }
-
-        public Guid PersonId { get; }
+        public Guid PersonId { get;}
         public string Name { get; }
         public Email Email { get; }
+        public Category Category { get; }
     }
 }
