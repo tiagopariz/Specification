@@ -1,4 +1,5 @@
 ﻿using Specification.Domain.Entities;
+using Specification.Domain.Specifications.ValueObjects;
 using Specification.Domain.ValueObjects;
 
 namespace Specification.Domain.Specifications.Entities

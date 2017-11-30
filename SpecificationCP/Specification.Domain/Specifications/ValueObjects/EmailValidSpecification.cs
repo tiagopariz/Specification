@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using Specification.Domain.ValueObjects;
 
-namespace Specification.Domain.Specifications.Entities
+namespace Specification.Domain.Specifications.ValueObjects
 {
     public class EmailValidSpecification<T> : CompositeSpecification<T>
     {

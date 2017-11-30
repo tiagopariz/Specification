@@ -34,7 +34,7 @@
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Interfaces\Specifications\ISpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Specifications\Entities\EmailValidSpecification.cs" />
+    <Compile Include="Specifications\ValueObjects\EmailValidSpecification.cs" />
     <Compile Include="Specifications\Entities\PersonCustomerSpecification.cs" />
     <Compile Include="Specifications\Entities\PersonNameValidSpecification.cs" />
     <Compile Include="Specifications\Entities\PersonValidSpecification.cs" />
