@@ -1,8 +1,8 @@
 ﻿using Specification.Domain.Specifications;
 
-namespace Specification.Domain.Entities
+namespace Specification.Domain.ValueObjects
 {
-    public abstract class Entity
+    public abstract class ValueObject
     {
         protected CompositeSpecification<object> ValidSpecification = null;
 

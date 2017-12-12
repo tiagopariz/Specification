@@ -47,6 +47,7 @@
     <Compile Include="Specifications\AndSpecification.cs" />
     <Compile Include="Specifications\CompositeSpecification.cs" />
     <Compile Include="ValueObjects\Email.cs" />
+    <Compile Include="ValueObjects\ValueObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

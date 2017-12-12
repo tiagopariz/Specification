@@ -15,7 +15,7 @@ namespace Specification.Domain.Entities
             Name = name;
             Email = email;
             Category = category;
-            Specification = new PersonValidSpecification<object>();
+            ValidSpecification = new PersonValidSpecification<object>();
         }
 
         public Guid PersonId { get;}
