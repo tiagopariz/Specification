@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Interfaces\Specifications\ISpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

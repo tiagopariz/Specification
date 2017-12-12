@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Specification.Domain.Entities;
 using Specification.Domain.Interfaces.Specifications;
 using Specification.Domain.Specifications;
@@ -19,8 +20,8 @@ namespace Specification.Prompt
                 new Person(Guid.NewGuid(), "Tiago1", new Email("tiago1@gmail.com"), new Category(2, "Partner")),
                 new Person(Guid.NewGuid(), "Tiago2", new Email("tiago2@gmail.com"), new Category(1, "Customer")),
                 new Person(Guid.NewGuid(), "Tiago3", new Email("tiago3@gmail.com"), new Category(2, "Partner")),
-                new Person(Guid.NewGuid(), "Tiago4", new Email("tiago4@gmail.com"), new Category(1, "Customer")),
-                new Person(Guid.NewGuid(), "Tiago5", new Email("tiago3@gmail.com"), new Category(1, "Customer")),
+                new Person(Guid.NewGuid(), "Tiago4", new Email("tiago4_gmail.com"), new Category(1, "Customer")),
+                new Person(Guid.NewGuid(), "Tiago5", new Email("tiago5@gmail.com"), new Category(1, "Customer")),
                 new Person(Guid.NewGuid(), "Tiago6", new Email("tiago6@gmail.com"), new Category(1, "Customer")),
                 new Person(Guid.NewGuid(), "Tiago7", new Email("tiago7@gmail.com"), null) };
 
@@ -30,6 +31,9 @@ namespace Specification.Prompt
 
             var allWithCategorySpecification = customersSpecification.Or(partnerSpecification);
             var includeNull = allWithCategorySpecification.Or(nullSpecification);
+
+            // Validations
+            ISpecification<Person> validSpecification = new PersonValidSpecification<Person>();
 
             Console.WriteLine(":: ALL PEOPLE ::");
 
@@ -76,6 +80,61 @@ namespace Specification.Prompt
             var allAndNullCategory = people.FindAll(x => includeNull.IsSatisfiedBy(x));
 
             foreach (var item in allAndNullCategory)
+            {
+                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+            }
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("");
+            Console.WriteLine(":: ALL VALID ::");
+
+            var validPeople = people.Where(x => validSpecification.IsSatisfiedBy(x));
+
+            foreach (var item in validPeople)
+            {
+                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+            }
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("");
+            Console.WriteLine(":: VALID CUSTOMERS ::");
+
+            var validCustomers = people.Where(x => validSpecification.IsSatisfiedBy(x) && customersSpecification.IsSatisfiedBy(x));
+
+            foreach (var item in validCustomers)
+            {
+                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("");
+            Console.WriteLine(":: VALID PARTNERS ::");
+
+            var validPartners = people.Where(x => validSpecification.IsSatisfiedBy(x) && partnerSpecification.IsSatisfiedBy(x));
+
+            foreach (var item in validPartners)
+            {
+                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+            }
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("");
+            Console.WriteLine(":: INVALID ::");
+
+            var invalidPeople = people.Where(x => !validSpecification.IsSatisfiedBy(x));
+
+            foreach (var item in invalidPeople)
+            {
+                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+            }
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("");
+            Console.WriteLine(":: ISVALID ::");
+
+            var isvalidPeople = people.Where(x => x.IsValid());
+
+            foreach (var item in isvalidPeople)
             {
                 Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
             }

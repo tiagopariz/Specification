@@ -1,9 +1,10 @@
 ﻿using System;
+using Specification.Domain.Specifications.Entities;
 using Specification.Domain.ValueObjects;
 
 namespace Specification.Domain.Entities
 {
-    public class Person
+    public class Person : Entity
     {
         public const int NameMinLength = 2;
         public const int NameMaxLength = 50;
@@ -14,6 +15,7 @@ namespace Specification.Domain.Entities
             Name = name;
             Email = email;
             Category = category;
+            Specification = new PersonValidSpecification<object>();
         }
 
         public Guid PersonId { get;}
