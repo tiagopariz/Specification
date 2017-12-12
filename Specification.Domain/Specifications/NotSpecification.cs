@@ -11,9 +11,7 @@ namespace Specification.Domain.Specifications
             _notSpecification = not;
         }
 
-        public override bool IsSatisfiedBy(T o)
-        {
-            return !_notSpecification.IsSatisfiedBy(o);
-        }
+        public override bool IsSatisfiedBy(T candidate) =>
+            !_notSpecification.IsSatisfiedBy(candidate);
     }
 }

@@ -12,9 +12,9 @@ namespace Specification.Domain.Specifications.ValueObjects
             _required = required;
         }
 
-        public override bool IsSatisfiedBy(T o)
+        public override bool IsSatisfiedBy(T candidate)
         {
-            var email = o as Email;
+            var email = candidate as Email;
 
             if (string.IsNullOrEmpty(email?.Address) && !_required)
                 return true;

@@ -11,9 +11,9 @@ namespace Specification.Domain.Specifications.Entities
             _required = required;
         }
 
-        public override bool IsSatisfiedBy(T o)
+        public override bool IsSatisfiedBy(T candidate)
         {
-            var person = o as Person;
+            var person = candidate as Person;
 
             if (string.IsNullOrEmpty(person?.Name) && !_required)
                 return true;

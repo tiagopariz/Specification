@@ -14,9 +14,7 @@ namespace Specification.Domain.Specifications
             _expression = expression;
         }
 
-        public override bool IsSatisfiedBy(T o)
-        {
-            return _expression(o);
-        }
+        public override bool IsSatisfiedBy(T candidate) =>
+            _expression(candidate);
     }
 }

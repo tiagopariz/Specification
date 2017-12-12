@@ -13,10 +13,10 @@ namespace Specification.Domain.Specifications
             _rightSpecification = right;
         }
 
-        public override bool IsSatisfiedBy(T o)
+        public override bool IsSatisfiedBy(T candidate)
         {
-            return _leftSpecification.IsSatisfiedBy(o) ||
-                   _rightSpecification.IsSatisfiedBy(o);
+            return _leftSpecification.IsSatisfiedBy(candidate) ||
+                   _rightSpecification.IsSatisfiedBy(candidate);
         }
     }
 }

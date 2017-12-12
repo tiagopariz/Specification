@@ -30,8 +30,8 @@ namespace Specification.Prompt
             ISpecification<Person> partnerSpecification = new ExpressionSpecification<Person>(x => x.Category?.CategoryId == 2);
             ISpecification<Person> nullSpecification = new ExpressionSpecification<Person>(x => x.Category == null);
 
-            ISpecification<Person> allWithCategorySpecification = customersSpecification.Or(partnerSpecification);
-            ISpecification<Person> includeNull = allWithCategorySpecification.Or(allWithCategorySpecification);
+            var allWithCategorySpecification = customersSpecification.Or(partnerSpecification);
+            var includeNull = allWithCategorySpecification.Or(nullSpecification);
 
             Console.WriteLine(":: ALL PEOPLE ::");
 
@@ -58,6 +58,26 @@ namespace Specification.Prompt
             var partners = people.FindAll(x => partnerSpecification.IsSatisfiedBy(x));
 
             foreach (var item in partners)
+            {
+                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine(":: WITHOUT CATEGORY ::");
+
+            var nullCategory = people.FindAll(x => nullSpecification.IsSatisfiedBy(x));
+
+            foreach (var item in nullCategory)
+            {
+                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine(":: WITH AND WITHOUT CATEGORY ::");
+
+            var allAndNullCategory = people.FindAll(x => includeNull.IsSatisfiedBy(x));
+
+            foreach (var item in allAndNullCategory)
             {
                 Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
             }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Specification.Domain.Entities
+﻿namespace Specification.Domain.Entities
 {
     public class Category
     {

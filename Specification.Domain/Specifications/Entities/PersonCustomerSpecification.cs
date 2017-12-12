@@ -11,9 +11,9 @@ namespace Specification.Domain.Specifications.Entities
             _categoryId = 1;
         }
 
-        public override bool IsSatisfiedBy(T o)
+        public override bool IsSatisfiedBy(T candidate)
         {
-            var person = o as Person;
+            var person = candidate as Person;
             return person != null && person.Category?.CategoryId == _categoryId;
         }
     }
