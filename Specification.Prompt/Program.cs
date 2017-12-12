@@ -15,16 +15,14 @@ namespace Specification.Prompt
             // https://www.codeproject.com/Articles/670115/Specification-pattern-in-Csharp
 
             // People list
-            var people = new List<Person>
-            {
+            var people = new List<Person> {
                 new Person(Guid.NewGuid(), "Tiago1", new Email("tiago1@gmail.com"), new Category(2, "Partner")),
                 new Person(Guid.NewGuid(), "Tiago2", new Email("tiago2@gmail.com"), new Category(1, "Customer")),
                 new Person(Guid.NewGuid(), "Tiago3", new Email("tiago3@gmail.com"), new Category(2, "Partner")),
                 new Person(Guid.NewGuid(), "Tiago4", new Email("tiago4@gmail.com"), new Category(1, "Customer")),
                 new Person(Guid.NewGuid(), "Tiago5", new Email("tiago3@gmail.com"), new Category(1, "Customer")),
                 new Person(Guid.NewGuid(), "Tiago6", new Email("tiago6@gmail.com"), new Category(1, "Customer")),
-                new Person(Guid.NewGuid(), "Tiago7", new Email("tiago7@gmail.com"), null)
-            };
+                new Person(Guid.NewGuid(), "Tiago7", new Email("tiago7@gmail.com"), null) };
 
             ISpecification<Person> customersSpecification = new ExpressionSpecification<Person>(x => x.Category?.CategoryId == 1);
             ISpecification<Person> partnerSpecification = new ExpressionSpecification<Person>(x => x.Category?.CategoryId == 2);
