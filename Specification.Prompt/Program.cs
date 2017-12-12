@@ -39,7 +39,7 @@ namespace Specification.Prompt
 
             foreach (var item in people)
             {
-                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+                Console.WriteLine(item.PersonId + " | " + item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
             }
 
             Console.WriteLine("");
@@ -51,7 +51,7 @@ namespace Specification.Prompt
 
             foreach (var item in customer)
             {
-                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+                Console.WriteLine(item.PersonId + " | " + item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
             }
 
             Console.WriteLine("");
@@ -61,7 +61,7 @@ namespace Specification.Prompt
 
             foreach (var item in partners)
             {
-                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+                Console.WriteLine(item.PersonId + " | " + item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
             }
 
             Console.WriteLine("");
@@ -71,7 +71,7 @@ namespace Specification.Prompt
 
             foreach (var item in nullCategory)
             {
-                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+                Console.WriteLine(item.PersonId + " | " + item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
             }
 
             Console.WriteLine("");
@@ -81,7 +81,7 @@ namespace Specification.Prompt
 
             foreach (var item in allAndNullCategory)
             {
-                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+                Console.WriteLine(item.PersonId + " | " + item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
             }
 
             Console.ForegroundColor = ConsoleColor.Green;
@@ -92,7 +92,7 @@ namespace Specification.Prompt
 
             foreach (var item in validPeople)
             {
-                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+                Console.WriteLine(item.PersonId + " | " + item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
             }
 
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -103,7 +103,7 @@ namespace Specification.Prompt
 
             foreach (var item in validCustomers)
             {
-                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+                Console.WriteLine(item.PersonId + " | " + item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
             }
 
             Console.ForegroundColor = ConsoleColor.White;
@@ -114,7 +114,7 @@ namespace Specification.Prompt
 
             foreach (var item in validPartners)
             {
-                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+                Console.WriteLine(item.PersonId + " | " + item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
             }
 
             Console.ForegroundColor = ConsoleColor.Red;
@@ -125,7 +125,7 @@ namespace Specification.Prompt
 
             foreach (var item in invalidPeople)
             {
-                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+                Console.WriteLine(item.PersonId + " | " + item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
             }
 
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -136,7 +136,7 @@ namespace Specification.Prompt
 
             foreach (var item in isvalidPeople)
             {
-                Console.WriteLine(item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
+                Console.WriteLine(item.PersonId + " | " + item.Name + " | " + item.Email.Address + " | " + item.Category?.Name);
             }
 
             Console.ReadKey();
