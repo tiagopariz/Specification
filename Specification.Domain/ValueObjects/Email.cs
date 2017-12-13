@@ -14,5 +14,7 @@ namespace Specification.Domain.ValueObjects
         }
 
         public string Address { get; }
+
+        public override string ToString() => Address;
     }
 }
