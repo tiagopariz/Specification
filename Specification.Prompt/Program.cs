@@ -13,27 +13,15 @@ namespace Specification.Prompt
     {
         public static void Main(string[] args)
         {
-            // https://www.codeproject.com/Articles/670115/Specification-pattern-in-Csharp
-
-            // People list
+            // Person list
             var people = new List<Person> {
-                new Person(Guid.NewGuid(), "Tiago1", new Email("tiago1@gmail.com"), new Category(2, "Partner")),
-                new Person(Guid.NewGuid(), "Tiago2", new Email("tiago2@gmail.com"), new Category(1, "Customer")),
-                new Person(Guid.NewGuid(), "Tiago3", new Email("tiago3@gmail.com"), new Category(2, "Partner")),
-                new Person(Guid.NewGuid(), "Tiago4", new Email("tiago4_gmail.com"), new Category(1, "Customer")),
-                new Person(Guid.NewGuid(), "Tiago5", new Email("tiago5@gmail.com"), new Category(1, "Customer")),
-                new Person(Guid.NewGuid(), "Tiago6", new Email("tiago6@gmail.com"), new Category(1, "Customer")),
-                new Person(Guid.NewGuid(), "Tiago7", new Email("tiago7@gmail.com"), null) };
-
-            ISpecification<Person> customersSpecification = new ExpressionSpecification<Person>(x => x.Category?.CategoryId == 1);
-            ISpecification<Person> partnerSpecification = new ExpressionSpecification<Person>(x => x.Category?.CategoryId == 2);
-            ISpecification<Person> nullSpecification = new ExpressionSpecification<Person>(x => x.Category == null);
-
-            var allWithCategorySpecification = customersSpecification.Or(partnerSpecification);
-            var includeNull = allWithCategorySpecification.Or(nullSpecification);
-
-            // Validations
-            ISpecification<Person> validSpecification = new PersonValidSpecification<Person>();
+                new Person(Guid.NewGuid(), "Jacob 1", new Email("jacob 1@gmail.com"), new Category(2, "Partner")),
+                new Person(Guid.NewGuid(), "Jacob 2", new Email("jacob 2@gmail.com"), new Category(1, "Customer")),
+                new Person(Guid.NewGuid(), "Jacob 3", new Email("jacob 3@gmail.com"), new Category(2, "Partner")),
+                new Person(Guid.NewGuid(), "Jacob 4", new Email("jacob 4_gmail.com"), new Category(1, "Customer")),
+                new Person(Guid.NewGuid(), "Jacob 5", new Email("jacob 5@gmail.com"), new Category(1, "Customer")),
+                new Person(Guid.NewGuid(), "Jacob 6", new Email("jacob 6@gmail.com"), new Category(1, "Customer")),
+                new Person(Guid.NewGuid(), "Jacob 7", new Email("jacob 7@gmail.com"), null) };
 
             Console.WriteLine(":: ALL PEOPLE ::");
 
@@ -41,6 +29,8 @@ namespace Specification.Prompt
             {
                 Console.WriteLine(item.PersonId + " | " + item.Name + " | " + item.Email.Address + " | " + item.Category?.Description);
             }
+
+            // Specifications usages
 
             Console.WriteLine("");
             Console.WriteLine(":: CUSTOMER ::");
@@ -57,6 +47,8 @@ namespace Specification.Prompt
             Console.WriteLine("");
             Console.WriteLine(":: PARTNER ::");
 
+            ISpecification<Person> partnerSpecification = new ExpressionSpecification<Person>(x => x.Category?.CategoryId == 2);
+
             var partners = people.FindAll(x => partnerSpecification.IsSatisfiedBy(x));
 
             foreach (var item in partners)
@@ -66,6 +58,8 @@ namespace Specification.Prompt
 
             Console.WriteLine("");
             Console.WriteLine(":: WITHOUT CATEGORY ::");
+
+            ISpecification<Person> nullSpecification = new ExpressionSpecification<Person>(x => x.Category == null);
 
             var nullCategory = people.FindAll(x => nullSpecification.IsSatisfiedBy(x));
 
@@ -77,6 +71,10 @@ namespace Specification.Prompt
             Console.WriteLine("");
             Console.WriteLine(":: WITH AND WITHOUT CATEGORY ::");
 
+            ISpecification<Person> customersSpecification = new ExpressionSpecification<Person>(x => x.Category?.CategoryId == 1);
+            var allWithCategorySpecification = customersSpecification.Or(partnerSpecification);
+            var includeNull = allWithCategorySpecification.Or(nullSpecification);
+
             var allAndNullCategory = people.FindAll(x => includeNull.IsSatisfiedBy(x));
 
             foreach (var item in allAndNullCategory)
@@ -87,6 +85,8 @@ namespace Specification.Prompt
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("");
             Console.WriteLine(":: ALL VALID ::");
+
+            ISpecification<Person> validSpecification = new PersonValidSpecification<Person>();
 
             var validPeople = people.Where(x => validSpecification.IsSatisfiedBy(x));
 
