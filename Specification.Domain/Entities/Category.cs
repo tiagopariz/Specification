@@ -5,10 +5,10 @@
         public const int DescriptionMinLength = 1;
         public const int DescriptionMaxLength = 20;
 
-        public Category(int categoryId, string name)
+        public Category(int categoryId, string description)
         {
             CategoryId = categoryId;
-            Description = name;
+            Description = description;
         }
 
         public int CategoryId { get; }
