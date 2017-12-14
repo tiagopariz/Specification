@@ -15,13 +15,13 @@ namespace Specification.Prompt
         {
             // Person list
             var people = new List<Person> {
-                new Person(Guid.NewGuid(), "Jacob 1", new Email("jacob 1@gmail.com"), new Category(2, "Partner")),
-                new Person(Guid.NewGuid(), "Jacob 2", new Email("jacob 2@gmail.com"), new Category(1, "Customer")),
-                new Person(Guid.NewGuid(), "Jacob 3", new Email("jacob 3@gmail.com"), new Category(2, "Partner")),
-                new Person(Guid.NewGuid(), "Jacob 4", new Email("jacob 4_gmail.com"), new Category(1, "Customer")),
-                new Person(Guid.NewGuid(), "Jacob 5", new Email("jacob 5@gmail.com"), new Category(1, "Customer")),
-                new Person(Guid.NewGuid(), "Jacob 6", new Email("jacob 6@gmail.com"), new Category(1, "Customer")),
-                new Person(Guid.NewGuid(), "Jacob 7", new Email("jacob 7@gmail.com"), null) };
+                new Person(Guid.NewGuid(), "Jacob 1", new Email("jacob1@gmail.com"), new Category(2, "Partner")),
+                new Person(Guid.NewGuid(), "Jacob 2", new Email("jacob2@gmail.com"), new Category(1, "Customer")),
+                new Person(Guid.NewGuid(), "Jacob 3", new Email("jacob3@gmail.com"), new Category(2, "Partner")),
+                new Person(Guid.NewGuid(), "Jacob 4", new Email("jacob4_gmail.com"), new Category(1, "Customer")),
+                new Person(Guid.NewGuid(), "Jacob 5", new Email("jacob5@gmail.com"), new Category(1, "Customer")),
+                new Person(Guid.NewGuid(), "Jacob 6", new Email("jacob6@gmail.com"), new Category(1, "Customer")),
+                new Person(Guid.NewGuid(), "Jacob 7", new Email("jacob7@gmail.com"), null) };
 
             Console.WriteLine(":: ALL PEOPLE ::");
 
