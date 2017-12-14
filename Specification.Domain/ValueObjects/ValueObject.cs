@@ -8,7 +8,7 @@ namespace Specification.Domain.ValueObjects
 
         public bool IsValid()
         {
-            return ValidSpecification.IsSatisfiedBy(this);
+            return ValidSpecification?.IsSatisfiedBy(this) ?? true;
         }
     }
 }

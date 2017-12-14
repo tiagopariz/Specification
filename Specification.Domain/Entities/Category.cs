@@ -1,6 +1,6 @@
 ﻿namespace Specification.Domain.Entities
 {
-    public class Category
+    public class Category : Entity
     {
         public Category(int categoryId, string name)
         {
